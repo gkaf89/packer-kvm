@@ -93,6 +93,9 @@ build {
   }
 
   provisioner "shell" {
+    environment_vars = [
+      "DEBIAN_FRONTEND=noninteractive"
+    ]
     execute_command = "{{ .Vars }} bash '{{ .Path }}'"
     scripts = ["scripts/update.sh", "scripts/vagrant.sh"]
   }

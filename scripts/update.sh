@@ -1,3 +1,3 @@
 # Update the box
-DEBIAN_FRONTEND=noninteractive apt-get --yes update
-DEBIAN_FRONTEND=noninteractive apt-get --yes full-upgrade
+apt-get --yes update
+apt-get --yes full-upgrade
