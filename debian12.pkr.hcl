@@ -87,8 +87,18 @@ source "qemu" "debian12" {
 build {
   sources = ["source.qemu.debian12"]
 
+  provisioner "file" {
+    source = "sshkeys/id_rsa.pub"
+    destination = "/tmp/vagrant_id_rsa.pub"
+  }
+
+  provisioner "shell" {
+    execute_command = "{{ .Vars }} bash '{{ .Path }}'"
+    scripts = ["scripts/update.sh", "scripts/vagrant.sh"]
+  }
+
   post-processor "vagrant" {
-    keep_input_artifact = false
+    keep_input_artifact = true
     output = "artifacts/box/debian12-vagrant.box"
   }
 }
