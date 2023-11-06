@@ -48,7 +48,12 @@ variable "ssh_password" {
 
 variable "ssh_username" {
   type    = string
-  default = "root"
+  default = "vagrant"
+}
+
+variable "ssh_fullname" {
+  type    = string
+  default = "Vagrant User"
 }
 
 variable "version" {
@@ -97,7 +102,7 @@ source "qemu" "debian12" {
                      ]
   shutdown_command = "echo '${var.ssh_password}' | sudo -S shutdown -P now"
   ssh_password     = var.ssh_password
-  ssh_username     = var.ssh_username
+  ssh_username     = "root"
   ssh_wait_timeout = "30m"
 }
 

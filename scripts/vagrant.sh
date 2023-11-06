@@ -1,10 +1,5 @@
 #!/bin/sh
 
-if ! id vagrant 1>/dev/null 2>&1; then
-  groupadd vagrant
-  useradd --create-home --shell /usr/bin/bash --gid vagrant vagrant
-fi
-
 # Store build time
 date > /etc/vagrant_box_build_time
 
