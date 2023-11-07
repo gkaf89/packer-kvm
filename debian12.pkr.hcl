@@ -1,5 +1,10 @@
 # Packer configuration file to generate a Debian 12 Vagrant box
 
+variable "machine_name" {
+  type    = string
+  default = "debian12-bookworm"
+}
+
 variable "config_file" {
   type    = string
   default = "debian-preseed.cfg"
@@ -62,6 +67,7 @@ variable "version" {
 }
 
 source "qemu" "debian12" {
+  vm_name          = "${var.machine_name}"
   accelerator      = "kvm"
   boot_command     = [
     "<esc><wait>",
